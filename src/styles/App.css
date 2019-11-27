@@ -1,0 +1,17 @@
+.card {
+  color: #000000;
+  -webkit-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+}
+
+.card:hover {
+  border-color: #0479a8;
+}
+
+.basic {
+  text-decoration: none;
+}
+
+.basic:hover {
+  text-decoration: none;
+}

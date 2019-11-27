@@ -1,0 +1,56 @@
+{
+  "name": "wiscshop",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@material-ui/core": "^4.6.1",
+    "@material-ui/lab": "^4.0.0-alpha.32",
+    "@material-ui/styles": "^4.6.0",
+    "actions-on-google": "^2.12.0",
+    "base-64": "^0.1.0",
+    "bootstrap": "^4.3.1",
+    "bootstrap-sass": "^3.4.1",
+    "bootstrap-switch-button-react": "^1.1.0",
+    "dialogflow-fulfillment": "^0.6.1",
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.0",
+    "node-sass": "^4.13.0",
+    "react": "^16.11.0",
+    "react-bootstrap": "^1.0.0-beta.14",
+    "react-dom": "^16.11.0",
+    "react-icons": "^3.8.0",
+    "react-lottie": "^1.2.3",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "3.2.0",
+    "styled-components": "^4.4.1",
+    "styled-theming": "^2.2.0",
+    "typeface-roboto": "0.0.75"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "tunnel": "ngrok http 8080",
+    "dev": "nodemon --inspect webhook/webhook.js"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "ngrok": "^3.2.5",
+    "nodemon": "^2.0.1"
+  }
+}
