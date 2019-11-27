@@ -26,7 +26,7 @@ app.post('/', express.json(), (req, res) => {
 
     const serverReturn = await fetch('https://mysqlcs639.cs.wisc.edu/login',request)
     const serverResponse = await serverReturn.json()
-    const token = await serverResponse.token
+    const token = serverResponse.token
 
     return token;
   }
@@ -34,7 +34,6 @@ app.post('/', express.json(), (req, res) => {
 
   let intentMap = new Map()
   intentMap.set('Default Welcome Intent', welcome)
-  intentMap.set('Choose Category', navigate)
   agent.handleRequest(intentMap)
 })
 
