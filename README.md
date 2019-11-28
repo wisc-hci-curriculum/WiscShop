@@ -9,6 +9,7 @@ The following API can be accessed at `https://mysqlcs639.cs.wisc.edu`
 | /users/`<username>`                            |               | ✔︎              | ✔︎   | ✔︎    | ✔︎   | ✔︎      |
 | /tags                                          |               |                | ✔︎   |      |     |        |
 | /categories                                    |               |                | ✔︎   |      |     |        |
+| /categories/tags                               |               |                | ✔︎   |      |     |        |
 | /products                                      |               |                | ✔︎   |      |     |        |
 | /products/`<product_id>`                       |               |                | ✔︎   |      |     |        |
 | /products/`<product_id>`/tags                  |               |                | ✔︎   |      |     |        |
