@@ -209,27 +209,10 @@ class Category extends React.Component {
       redirect: "follow"
     };
 
-    let response = await fetch("https://mysqlcs639.cs.wisc.edu/tags", requestOptions);
+    let response = await fetch('https://mysqlcs639.cs.wisc.edu/categories/' + this.props.name + '/tags', requestOptions);
     let result = await response.json();
 
-    let relevantTags = [];
-    let checked = [];
-
-    outer:
-    for(const tag of result.tags) {
-      for(const product of this.state.products) {
-        let tagResponse = await fetch('https://mysqlcs639.cs.wisc.edu/products/' + product.id + '/tags', requestOptions)
-        let tagResult = await tagResponse.json();
-
-        if(tagResult.tags.indexOf(tag) > -1) {
-          relevantTags.push(tag);
-          checked.push(this.state.applicationTags.indexOf(tag) > -1);
-          continue outer;
-        }
-      }
-    }
-
-    this.setState({tags: relevantTags});
+    this.setState({tags: result.tags})
   }
 
   getTags() {
