@@ -26,8 +26,7 @@ class App extends React.Component {
       categories: [],
       products: [],
       serverRoute: '/',
-      shouldUpdate: true,
-      auth: false
+      shouldUpdate: true
     }
   }
 
@@ -37,11 +36,11 @@ class App extends React.Component {
         <Router>
           <div style={{height: '100vh'}}>
             <Navbar bg="primary" variant="dark" fixed="top">
-              <Link to={this.state.auth ? '/'+localStorage.getItem('username') : '/'}>
+              <Link to={localStorage.getItem('auth') ? '/'+localStorage.getItem('username') : '/'}>
                 <Navbar.Brand>WiscShop</Navbar.Brand>
               </Link>
               <Nav className="ml-auto">
-              {this.state.auth ? (
+              {localStorage.getItem('auth') ? (
                 <Link to={'/'+localStorage.getItem('username') + "/cart"}>
                   <Navbar.Text className="mr-sm-2">
                     Cart
@@ -72,7 +71,7 @@ class App extends React.Component {
 
         <div style={{display: 'flex', position: 'fixed', right: 0, bottom: 0}}>
         {
-          this.state.auth ? <Messages/> : <></>
+          localStorage.getItem('auth') ? <Messages/> : <></>
         }
         </div>
       </>
@@ -273,7 +272,7 @@ class App extends React.Component {
       let response = await fetch('https://mysqlcs639.cs.wisc.edu/login/', requestOptions);
       let result = await response.json();
       if(!('token' in result)) {
-        this.setState({auth:false})
+        localStorage.setItem('auth', false);
         return false;
       }
       localStorage.setItem('token', result.token);
@@ -282,7 +281,7 @@ class App extends React.Component {
       this.forceUpdate();
     }
     catch(error) {
-      this.setState({auth:false})
+      localStorage.setItem('auth', false);
       return false;
     }
     return true;
@@ -290,7 +289,7 @@ class App extends React.Component {
 
   async signIn(username, password) {
     let success = await this.getToken(username, password);
-    this.setState({auth:true})
+    localStorage.setItem('auth', true);
 
     return success;
   }
@@ -321,7 +320,7 @@ class App extends React.Component {
       }
 
       let success = await this.getToken(username, password);
-      this.setState({auth:true})
+      localStorage.setItem('auth', false);
       return success;
     }
     catch(error) {
