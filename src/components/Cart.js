@@ -19,7 +19,7 @@ class Cart extends React.Component {
   }
 
   async componentDidMount() {
-    await this.fetchProducts();
+    await this.fetchProductsFromServer();
   }
 
   render() {
@@ -58,6 +58,31 @@ class Cart extends React.Component {
     );
   }
 
+  async fetchProductsFromServer() {
+    while(true) {
+      let myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+      myHeaders.append("x-access-token", localStorage.getItem('token'));
+
+      let requestOptions = {
+        method: 'GET',
+        headers: myHeaders,
+        redirect: 'follow'
+      };
+
+      let productsResponse = await fetch('https://mysqlcs639.cs.wisc.edu/application/products', requestOptions);
+      if(!productsResponse.ok) {
+        await this.delay(500);
+        continue;
+      }
+      let productsResult = await productsResponse.json();
+
+      this.setState({products: productsResult.products});
+
+      await this.delay(500);
+    }
+  }
+
   getProducts() {
     let products = [];
 
@@ -94,23 +119,6 @@ class Cart extends React.Component {
     }
 
     return price
-  }
-
-  async fetchProducts() {
-    let myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    myHeaders.append("x-access-token", localStorage.getItem('token'));
-
-    let requestOptions = {
-      method: 'GET',
-      headers: myHeaders,
-      redirect: 'follow'
-    };
-
-    let response = await fetch('https://mysqlcs639.cs.wisc.edu/application/products', requestOptions);
-    let result = await response.json();
-
-    await this.setState({products: result.products});
   }
 
   getQuantityButtons(id) {
@@ -182,6 +190,14 @@ class Cart extends React.Component {
     await fetch('https://mysqlcs639.cs.wisc.edu/application/products', requestOptions);
 
     await this.fetchProducts();
+  }
+
+  async delay(delayInms) {
+    return new Promise(resolve  => {
+      setTimeout(() => {
+        resolve(2);
+      }, delayInms);
+    });
   }
 }
 
