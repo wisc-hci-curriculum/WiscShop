@@ -19,7 +19,7 @@ class Cart extends React.Component {
   }
 
   async componentDidMount() {
-    await this.fetchProductsFromServer();
+    await this.fetchProducts();
   }
 
   render() {
@@ -58,7 +58,7 @@ class Cart extends React.Component {
     );
   }
 
-  async fetchProductsFromServer() {
+  async fetchProducts() {
     while(true) {
       let myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
