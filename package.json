@@ -13,7 +13,7 @@
     "bootstrap-switch-button-react": "^1.1.0",
     "dialogflow-fulfillment": "^0.6.1",
     "express": "^4.17.1",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^3.1.1",
     "node-sass": "^4.13.0",
     "pluralize": "^8.0.0",
     "react": "^16.11.0",
